@@ -3,12 +3,19 @@ import AddForm from "./components/AddForm/AddForm";
 import Header from "./components/Header/Header";
 import ToDoList from "./components/ToDoList/ToDoList";
 import EditForm from "./components/EditForm/EditForm";
+import { Toaster, toast } from "react-hot-toast";
 
 export type ToDoListItemType = {
   id: number;
   title: string;
   completed: boolean;
 };
+
+const completedMessages: { title: string; icon: string }[] = [
+  { title: "ایول تموم شد", icon: "👏" },
+  { title: "هوراا", icon: "🎉" },
+  { title: "دیدی کاری نداشت؟", icon: "😅" },
+];
 
 function App() {
   const [toDoListItems, setToDoListItems] = useState<ToDoListItemType[]>([]);
@@ -32,6 +39,12 @@ function App() {
         return item;
       })
     );
+    const randomMessage =
+      completedMessages[Math.floor(Math.random() * completedMessages.length)];
+    toast(randomMessage.title, {
+      // icon: "👏",
+      icon: randomMessage.icon,
+    });
   }
   function onUndoCompleteItem(id: number) {
     setToDoListItems((prev) =>
@@ -42,6 +55,7 @@ function App() {
         return item;
       })
     );
+    toast.success("تسک مجدد فعال شد");
   }
 
   function onEditItem(id: number, title: string) {
@@ -54,10 +68,7 @@ function App() {
       })
     );
     setIsEditing(false);
-  }
-
-  function onDeleteItem(id: number) {
-    setToDoListItems((prev) => prev.filter((item) => item.id !== id));
+    toast.success("تسک با موفقیت ویرایش شد");
   }
 
   function onEditClicked(id: number) {
@@ -66,6 +77,11 @@ function App() {
       setIsEditing(true);
       setEditObject(item);
     }
+  }
+
+  function onDeleteItem(id: number) {
+    setToDoListItems((prev) => prev.filter((item) => item.id !== id));
+    toast.success("تسک با موفقیت حذف شد");
   }
 
   return (
@@ -88,6 +104,9 @@ function App() {
         ) : (
           <AddForm onAddToDoList={handleAddToToDoList} />
         )}
+      </div>
+      <div>
+        <Toaster />
       </div>
     </main>
   );
