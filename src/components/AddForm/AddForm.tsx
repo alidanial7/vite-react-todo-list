@@ -18,7 +18,7 @@ export default function AddForm({ onAddToDoList }: Props) {
   return (
     <form
       onSubmit={(e) => handleAddToList(e)}
-      className="absolute bottom-0 left-0 right-0 w-full flex gap-2 px-2 flex-col mb-2"
+      className="w-full flex gap-2 px-2 flex-col my-2"
     >
       <input
         type="text"
