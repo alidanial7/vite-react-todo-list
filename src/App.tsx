@@ -93,9 +93,7 @@ function App() {
           <AddForm onAddToDoList={handleAddToToDoList} />
         )}
       </div>
-      <div>
-        <Toaster />
-      </div>
+      <Toaster position="bottom-center" />
     </main>
   );
 }
