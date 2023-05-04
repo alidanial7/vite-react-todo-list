@@ -23,7 +23,7 @@ export default function AddForm({ onAddToDoList }: Props) {
       <input
         type="text"
         placeholder="عنوان کار جدید"
-        className="w-full rounded-xl outline-none border-slate-300 border-2 p-2"
+        className="w-full rounded-xl outline-none border-slate-300 border-2 p-2 focus:border-blue-500"
         onChange={(event) => setInputValue(event.target.value)}
         value={inputValue}
       />

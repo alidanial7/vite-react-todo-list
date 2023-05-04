@@ -1,9 +1,10 @@
-import { FaRegCircle, FaCircle, FaUndo, FaTrash } from "react-icons/fa";
+import { FaRegCircle, FaUndo, FaTrash, FaEdit } from "react-icons/fa";
 
 type Props = {
   toDoListItem: { id: number; title: string; completed: boolean };
   onComplete: (id: number) => void;
   onUndoComplete: (id: number) => void;
+  onEdit: (id: number) => void;
   onDelete: (id: number) => void;
 };
 
@@ -11,13 +12,14 @@ function ListItem({
   toDoListItem,
   onComplete,
   onUndoComplete,
+  onEdit,
   onDelete,
 }: Props) {
   return (
     <div
       className={`${
         toDoListItem.completed
-          ? "border-blue-300 text-slate-400 line-through"
+          ? "border-lime-500 text-slate-400 line-through"
           : "border-slate-300 "
       } bg-slate-200 p-2 border-r-4 w-full  my-2 rounded-lg text-right flex items-center gap-2`}
     >
@@ -35,6 +37,9 @@ function ListItem({
       )}
       <span className="w-full flex-1">{toDoListItem.title}</span>
 
+      <button onClick={() => onEdit(toDoListItem.id)}>
+        <FaEdit className="text-sm text-yellow-500" />
+      </button>
       <button onClick={() => onDelete(toDoListItem.id)}>
         <FaTrash className="text-sm text-red-400" />
       </button>

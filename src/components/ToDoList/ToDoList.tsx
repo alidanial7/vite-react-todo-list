@@ -1,10 +1,10 @@
-import { useEffect, useState } from "react";
 import ListItem from "./ListItem/ListItem";
 
 type Props = {
   toDoListItems: { id: number; title: string; completed: boolean }[];
   onCompleteItem: (id: number) => void;
   onUndoCompleteItem: (id: number) => void;
+  onEditItem: (id: number) => void;
   onDeleteItem: (id: number) => void;
 };
 
@@ -12,6 +12,7 @@ function ToDoList({
   toDoListItems,
   onCompleteItem,
   onUndoCompleteItem,
+  onEditItem,
   onDeleteItem,
 }: Props) {
   if (toDoListItems.length === 0) {
@@ -32,6 +33,7 @@ function ToDoList({
             toDoListItem={toDoListItem}
             onComplete={(id) => onCompleteItem(id)}
             onDelete={(id) => onDeleteItem(id)}
+            onEdit={(id) => onEditItem(id)}
             onUndoComplete={(id) => onUndoCompleteItem(id)}
           />
         ))}
@@ -43,6 +45,7 @@ function ToDoList({
             toDoListItem={toDoListItem}
             onComplete={(id) => onCompleteItem(id)}
             onDelete={(id) => onDeleteItem(id)}
+            onEdit={(id) => onEditItem(id)}
             onUndoComplete={(id) => onUndoCompleteItem(id)}
           />
         ))}
