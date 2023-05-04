@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ToDoListItemType } from "../../App";
+import { ToDoListItemType } from "../../Types";
 
 type Props = {
   editObject: ToDoListItemType;

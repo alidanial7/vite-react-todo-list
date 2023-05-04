@@ -4,12 +4,7 @@ import Header from "./components/Header/Header";
 import ToDoList from "./components/ToDoList/ToDoList";
 import EditForm from "./components/EditForm/EditForm";
 import { Toaster, toast } from "react-hot-toast";
-
-export type ToDoListItemType = {
-  id: number;
-  title: string;
-  completed: boolean;
-};
+import { ToDoListItemType } from "./Types";
 
 const completedMessages: { title: string; icon: string }[] = [
   { title: "ایول تموم شد", icon: "👏" },
@@ -42,7 +37,6 @@ function App() {
     const randomMessage =
       completedMessages[Math.floor(Math.random() * completedMessages.length)];
     toast(randomMessage.title, {
-      // icon: "👏",
       icon: randomMessage.icon,
     });
   }
