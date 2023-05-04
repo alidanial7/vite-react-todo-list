@@ -5,12 +5,7 @@ import ToDoList from "./components/ToDoList/ToDoList";
 import EditForm from "./components/EditForm/EditForm";
 import { Toaster, toast } from "react-hot-toast";
 import { ToDoListItemType } from "./Types";
-
-const completedMessages: { title: string; icon: string }[] = [
-  { title: "ایول تموم شد", icon: "👏" },
-  { title: "هوراا", icon: "🎉" },
-  { title: "دیدی کاری نداشت؟", icon: "😅" },
-];
+import randomDoneMessageGenerator from "./utils/randomDoneMessageGenerator";
 
 function App() {
   const [toDoListItems, setToDoListItems] = useState<ToDoListItemType[]>([]);
@@ -34,8 +29,7 @@ function App() {
         return item;
       })
     );
-    const randomMessage =
-      completedMessages[Math.floor(Math.random() * completedMessages.length)];
+    const randomMessage = randomDoneMessageGenerator();
     toast(randomMessage.title, {
       icon: randomMessage.icon,
     });
