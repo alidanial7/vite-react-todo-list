@@ -69,7 +69,7 @@ function App() {
   }
 
   return (
-    <main className="w-screen h-screen bg-slate-400  flex items-center justify-center">
+    <main className="w-screen h-screen bg-slate-300  flex items-center justify-center">
       <div className="rounded-xl bg-slate-100 px-2 md:px-3 w-[300px] md:w-[400px] text-center max-h-[600px] h-[90vh] flex flex-col justify-between">
         <Header />
         <ToDoList
