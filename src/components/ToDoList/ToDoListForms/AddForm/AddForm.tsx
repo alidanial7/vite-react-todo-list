@@ -1,17 +1,15 @@
 import { useState } from "react";
 
-type Props = {
-  onAddToDoList: (title: string) => void;
-};
+import { useToDoListContext } from "../../../../hooks/useToDoListContext";
 
-export default function AddForm({ onAddToDoList }: Props) {
+export default function AddForm() {
   const [inputValue, setInputValue] = useState<string>("");
 
-  //TODO: set focus to input
-  //TODO: add validation
+  const { toDoListDispatch } = useToDoListContext();
+
   function handleAddToList(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    onAddToDoList(inputValue);
+    toDoListDispatch({ type: "ADD_TODO", payload: { title: inputValue } });
     setInputValue("");
   }
 
