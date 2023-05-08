@@ -1,7 +1,7 @@
 import { EditIndexActionType, EditIndexStateType } from "./Types";
 
 export function editIndexReducer(
-  editObjectState: EditIndexStateType,
+  _editObjectState: EditIndexStateType | never,
   action: EditIndexActionType
 ) {
   switch (action.type) {
